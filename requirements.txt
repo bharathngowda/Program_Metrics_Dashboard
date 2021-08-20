@@ -28,3 +28,4 @@ urllib3==1.25.10
 Werkzeug==1.0.1
 xlrd==1.2.0
 zope.interface==5.1.0
+business-duration==0.64
