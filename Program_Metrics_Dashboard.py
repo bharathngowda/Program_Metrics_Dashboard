@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[19]:
+# In[101]:
 
 
 
@@ -27,7 +27,7 @@ from business_duration import businessDuration
 import calendar
 
 
-# In[20]:
+# In[102]:
 
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -35,7 +35,7 @@ app = dash.Dash(__name__)
 app.config['suppress_callback_exceptions'] = True
 
 
-# In[21]:
+# In[103]:
 
 
 def No_Data_Available():
@@ -48,7 +48,7 @@ def No_Data_Available():
     return fig
 
 
-# In[22]:
+# In[104]:
 
 
 # Reading Data to DataFrame
@@ -135,7 +135,7 @@ GPH_table_cols=['Date', 'User Name', 'Shift', 'Shift Schedule', 'Work Hours','Lo
 SQF_table_cols=['Number','Created', 'Reported date','Resolved Date','Urgency', 'Requested for','Location','Category','Type','Owner','Audit_Date', 'Score %', 'Audited By']
 
 
-# In[23]:
+# In[105]:
 
 
 
@@ -280,7 +280,7 @@ data_table_data_style=[{'if': {'filter_query': '{ManualAck_TAT (%)} > 95','colum
                         'backgroundColor': 'rgb(50, 50, 50)','color': 'white'}]
 
 
-# In[24]:
+# In[106]:
 
 
 
@@ -633,10 +633,10 @@ app.layout=html.Div([
 ],className='row',style=black_bg)
 
 
-# In[25]:
+# In[107]:
 
 
-# Seting Date Range
+# Seeting Date Range
 
 def span_collection(span_type):
     if span_type=='Previous Week':
@@ -680,7 +680,7 @@ def Update_Date_Range(value):
     return start_date,end_date
 
 
-# In[26]:
+# In[108]:
 
 
 
@@ -874,7 +874,7 @@ def update_tickets_table(relayoutData,category_selected,type_selected,data):
     return [html.Div(table,className='row',style=black_bg),data]
 
 
-# In[27]:
+# In[109]:
 
 
 # Tickets_by_Aging
@@ -904,7 +904,7 @@ def Update_Ageing(Region):
     return fig
 
 
-# In[28]:
+# In[110]:
 
 
 # Weekly_Ticket_Count
@@ -973,7 +973,7 @@ def Update_Weekly_Ticket_Count(Region,Ageing,Week_Num,Priority,Location,Shift,RD
     return fig
 
 
-# In[29]:
+# In[111]:
 
 
 # Ticket_Count_by_Region
@@ -1041,7 +1041,7 @@ def Update_Ticket_Count_by_Region(Region,Ageing,Week_Num,Priority,Shift,RDC,Cate
     return fig
 
 
-# In[30]:
+# In[112]:
 
 
 # Ticket_Count_by_Shift
@@ -1108,7 +1108,7 @@ def Update_Ticket_Count_by_Shift(Region,Ageing,Week_Num,Priority,Location,RDC,Ca
     return fig
 
 
-# In[31]:
+# In[113]:
 
 
 # Ticket_by_Priority
@@ -1177,7 +1177,7 @@ def Update_Ticket_by_Priority(Region,Ageing,Week_Num,Location,Shift,RDC,Category
     
 
 
-# In[32]:
+# In[114]:
 
 
 # Reported Date Captured
@@ -1245,7 +1245,7 @@ def Update_Reported_Date_Captured_Graph(Region,Ageing,Week_Num,Priority,Location
     return fig
 
 
-# In[33]:
+# In[115]:
 
 
 # Ticket_by_Category
@@ -1314,7 +1314,7 @@ def Update_Ticket_by_Category(Region,Ageing,Week_Num,Priority,Location,Shift,RDC
     
 
 
-# In[34]:
+# In[116]:
 
 
 # Ticket_by_Type
@@ -1383,7 +1383,7 @@ def Update_Ticket_by_Type(Region,Ageing,Week_Num,Priority,Location,Shift,RDC,Cat
     
 
 
-# In[35]:
+# In[117]:
 
 
 # Tickets by Assignment Group
@@ -1451,7 +1451,7 @@ def Update_Ticket_by_Assignment_Group(Region,Ageing,Week_Num,Priority,Location,S
     return fig
 
 
-# In[36]:
+# In[118]:
 
 
 # Tickets by Contact Type
@@ -1519,7 +1519,7 @@ def Update_Ticket_by_Contact_Type(Region,Ageing,Week_Num,Priority,Location,Shift
     return fig
 
 
-# In[37]:
+# In[119]:
 
 
 # Assigned to
@@ -1588,7 +1588,7 @@ def Update_Ticket_by_Assigned_to(Region,Ageing,Week_Num,Priority,Location,Shift,
     return fig
 
 
-# In[38]:
+# In[120]:
 
 
 @app.callback(
@@ -1640,7 +1640,7 @@ def Update_Open_Tickets_Table(Ageing,Week_Num,Priority,Location,Shift,RDC,Catego
         return [html.Br(),[]]
 
 
-# In[39]:
+# In[121]:
 
 
 # Manual Acknowledgement Trend
@@ -1722,7 +1722,7 @@ def Update_Closed_Tickets_Manual_Ack_Trend_Graph(Region,Start_Date,End_Date,Prio
     return fig
 
 
-# In[40]:
+# In[122]:
 
 
 # RCA TAT Trend
@@ -1804,7 +1804,7 @@ def Update_Closed_Tickets_RCA_Trend_Graph(Region,Start_Date,End_Date,Priority,Lo
     return fig
 
 
-# In[41]:
+# In[123]:
 
 
 # Priority
@@ -1881,7 +1881,7 @@ def Update_Closed_Tickets_Priority_Graph(Region,Start_Date,End_Date,Priority,Loc
     return fig
 
 
-# In[42]:
+# In[124]:
 
 
 # Location
@@ -1958,7 +1958,7 @@ def Update_Closed_Tickets_Location_Graph(Region,Start_Date,End_Date,Priority,Loc
     return fig
 
 
-# In[43]:
+# In[125]:
 
 
 # Shift
@@ -2035,7 +2035,7 @@ def Update_Closed_Tickets_Shift_Graph(Region,Start_Date,End_Date,Priority,Locati
     return fig
 
 
-# In[44]:
+# In[126]:
 
 
 # Category
@@ -2112,7 +2112,7 @@ def Update_Closed_Tickets_Category_Graph(Region,Start_Date,End_Date,Priority,Loc
     return fig
 
 
-# In[45]:
+# In[127]:
 
 
 # Type
@@ -2189,7 +2189,7 @@ def Update_Closed_Tickets_Type_Graph(Region,Start_Date,End_Date,Priority,Locatio
     return fig
 
 
-# In[46]:
+# In[128]:
 
 
 # Contact Type
@@ -2267,7 +2267,7 @@ def Update_Closed_Tickets_Contact_Type_Graph(Region,Start_Date,End_Date,Priority
     return fig
 
 
-# In[47]:
+# In[129]:
 
 
 # Closing Count
@@ -2347,7 +2347,7 @@ def Update_Closed_Tickets_Weekly_Count_Graph(Region,Start_Date,End_Date,Priority
     return fig
 
 
-# In[48]:
+# In[130]:
 
 
 @app.callback(
@@ -2408,7 +2408,7 @@ def Update_Closed_Tickets_Table(Region,Start_Date,End_Date,Priority,Location,Shi
         return [html.Br(),[]]
 
 
-# In[49]:
+# In[131]:
 
 
 # Global Productivity Hub Efficiency
@@ -2472,7 +2472,7 @@ def Update_GPH_Efficiency_Graph(Region,Start_Date,End_Date,Leave,Efficiency,Util
     return fig
 
 
-# In[50]:
+# In[132]:
 
 
 # Global Productivity Hub Utilization
@@ -2536,7 +2536,7 @@ def Update_GPH_Utilization_Graph(Region,Start_Date,End_Date,Leave,Efficiency,Uti
     return fig
 
 
-# In[51]:
+# In[133]:
 
 
 # Global Productivity Hub Capacity Utilization
@@ -2600,7 +2600,7 @@ def Update_GPH_Capacity_Utilization_Graph(Region,Start_Date,End_Date,Leave,Effic
     return fig
 
 
-# In[52]:
+# In[134]:
 
 
 # Global Productivity Hub Attendance
@@ -2658,7 +2658,7 @@ def Update_GPH_Leave_Graph(Region,Start_Date,End_Date,Leave,Efficiency,Utilizati
     return fig
 
 
-# In[53]:
+# In[135]:
 
 
 @app.callback(
@@ -2703,7 +2703,7 @@ def Update_GPH_Details_Table(Region,Start_Date,End_Date,Leave,Efficiency,Utiliza
     
 
 
-# In[54]:
+# In[136]:
 
 
 
@@ -2995,7 +2995,7 @@ def Update_SQF_tickets_table(Region,Start_Date,End_Date,span_selected,sqf,audit_
         return html.Br()
 
 
-# In[55]:
+# In[137]:
 
 
 
@@ -3038,7 +3038,7 @@ def Update_PKT_Graph(Region,Start_Date,End_Date):
     
 
 
-# In[56]:
+# In[138]:
 
 
 
@@ -3119,8 +3119,9 @@ def Update_Performance(Region,Agent_Name,Metrics,Start_Date,End_Date):
     Weights=[15,15,10,10,10,10,10,10,10]
     
     MetricWeightage=Performance[['Agent Name','Date','ManualAck_TAT (%)', 'RCA_TAT (%)', 'Internal_Quality_Score (%)',
-       'No_Shows (Nos.)', 'PKT (%)', 'Capacity_Utilization (%)', 
-       'Escalations (Nos.)', 'Unplanned_Leaves (Nos.)']].reset_index().set_index(['level_0','level_1','Agent Name','Date'])
+       'No_Shows (Nos.)', 'PKT (%)','Capacity_Utilization (%)', 'Escalations (Nos.)', 
+        'Unplanned_Leaves (Nos.)']].rename_axis(index={'Date':'level_1'}).reset_index().set_index(['level_0','level_1','Agent Name','Date'])
+    
     MetricWeightage['Escalations (Nos.)'].fillna(value=0,inplace=True)
     MetricWeightage['Unplanned_Leaves (Nos.)'].fillna(value=0,inplace=True)
     MetricWeightage['No_Shows (Nos.)']=MetricWeightage['No_Shows (Nos.)'].apply(lambda x: 100 if (x<=2) else 0)
@@ -3233,7 +3234,7 @@ def Update_Performance(Region,Agent_Name,Metrics,Start_Date,End_Date):
         return Options,Data,Columns,fig
 
 
-# In[57]:
+# In[139]:
 
 
 
@@ -3540,7 +3541,7 @@ def Update_PKT_Graph_2(Start_Date,End_Date):
     return fig
 
 
-# In[58]:
+# In[140]:
 
 
 if __name__=='__main__':
