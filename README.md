@@ -4,16 +4,25 @@ Created an interactive dashboard to provide deep insights on overall program met
 The graphs are interactiv and clicking on the graphs o points on graphs will dynamically filter other related graphs and tables.
 The data is dummy data and its read from excel sheets and loaded to pandas dataframe.
 
-### Screenhots
+### Video
 
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/video.gif)
+### Screenshots
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture1.png)
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture2.png)
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture3.png)
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture4.png)
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture5.png)
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture6.png)
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture7.png)
+
 ![App Screenshot](https://github.com/bharathngowda/Program_Metrics_Dashboard/blob/main/Screenshots/Picture8.png)
 
 ### Programming Language and Packages
