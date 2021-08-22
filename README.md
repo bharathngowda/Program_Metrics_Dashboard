@@ -1,7 +1,7 @@
 # Program Metrics dashboard
 
 Created an interactive dashboard to provide deep insights on overall program metrics which includes ticketing process, productivity, quality, agent performance and and overall program status.
-The graphs are interactiv and clicking on the graphs o points on graphs will dynamically filter other related graphs and tables.
+The graphs are interactive and clicking on the graphs or points on graphs will dynamically filter other related graphs and tables.
 The data is dummy data and its read from excel sheets and loaded to pandas dataframe.
 
 ### Video
