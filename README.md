@@ -51,6 +51,6 @@ To run this notebook interactively:
 
  6. Execute `python Program_Metrics_Dashboard.py` from the command line or terminal.
 
- 7. Copy the link http://localhost:8888 from command prompt and paste in browser and the dashboard will load.
+ 7. Copy the link `http://localhost:8888` from command prompt and paste in browser and the dashboard will load.
 
  8. When you're done deactivate the virtual environment with deactivate.`.
