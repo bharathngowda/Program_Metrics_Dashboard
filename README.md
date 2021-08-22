@@ -49,7 +49,7 @@ To run this notebook interactively:
 
  5. Install the required dependencies with pip install -r requirements.txt.
 
- 6. Execute python file Program_Metrics_Dashboard.py from the command line or terminal.
+ 6. Execute `python Program_Metrics_Dashboard.py` from the command line or terminal.
 
  7. Copy the link http://localhost:8888 from command prompt and paste in browser and the dashboard will load.
 
