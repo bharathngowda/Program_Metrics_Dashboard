@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[101]:
+# In[133]:
 
 
 
@@ -15,11 +15,11 @@ from pathlib import Path
 import plotly.express as px
 import plotly.graph_objects as go
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output,State
 from dash.exceptions import PreventUpdate
-import dash_table
+from dash import dash_table
 import re
 import json
 from plotly.subplots import make_subplots
@@ -27,7 +27,7 @@ from business_duration import businessDuration
 import calendar
 
 
-# In[102]:
+# In[134]:
 
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -35,7 +35,7 @@ app = dash.Dash(__name__)
 app.config['suppress_callback_exceptions'] = True
 
 
-# In[103]:
+# In[135]:
 
 
 def No_Data_Available():
@@ -48,7 +48,7 @@ def No_Data_Available():
     return fig
 
 
-# In[104]:
+# In[136]:
 
 
 # Reading Data to DataFrame
@@ -135,7 +135,7 @@ GPH_table_cols=['Date', 'User Name', 'Shift', 'Shift Schedule', 'Work Hours','Lo
 SQF_table_cols=['Number','Created', 'Reported date','Resolved Date','Urgency', 'Requested for','Location','Category','Type','Owner','Audit_Date', 'Score %', 'Audited By']
 
 
-# In[105]:
+# In[137]:
 
 
 
@@ -280,7 +280,7 @@ data_table_data_style=[{'if': {'filter_query': '{ManualAck_TAT (%)} > 95','colum
                         'backgroundColor': 'rgb(50, 50, 50)','color': 'white'}]
 
 
-# In[106]:
+# In[138]:
 
 
 
@@ -309,8 +309,8 @@ app.layout=html.Div([
             dcc.DatePickerRange(
                 id='DateRange',
                 min_date_allowed=datetime.datetime(2018,6,19),
-                max_date_allowed=datetime.datetime.today().date(),
-                initial_visible_month=datetime.datetime.today().date(),
+                max_date_allowed=datetime.datetime(2021,8,10),
+                initial_visible_month=datetime.datetime(2021,8,10).date(),
                 style=datepicker_style)],className='three columns'),
         html.Div(
             dcc.Dropdown(id='Quick_Filter',
@@ -633,40 +633,40 @@ app.layout=html.Div([
 ],className='row',style=black_bg)
 
 
-# In[107]:
+# In[139]:
 
 
 # Seeting Date Range
 
 def span_collection(span_type):
     if span_type=='Previous Week':
-        start_date=datetime.date.today()-datetime.timedelta(days=datetime.date.today().weekday()+1,weeks=1)
+        start_date=datetime.date(2021,8,10)-datetime.timedelta(days=datetime.date(2021,8,10).weekday()+1,weeks=1)
         end_date=start_date+datetime.timedelta(days=6)
     elif span_type=='Week to Date':
-        start_date=datetime.date.today()-datetime.timedelta(days=datetime.date.today().weekday()+1)
-        end_date=datetime.date.today()
+        start_date=datetime.date(2021,8,10)-datetime.timedelta(days=datetime.date(2021,8,10).weekday()+1)
+        end_date=datetime.date(2021,8,10)
     elif span_type=='Previous Month':
-        start_date=datetime.date(datetime.datetime.today().year,datetime.datetime.today().month-1,1)
-        end_date=datetime.date(datetime.datetime.today().year,datetime.datetime.today().month-1,
-                               calendar.monthrange(datetime.datetime.today().year,datetime.datetime.today().month-1)[1])
+        start_date=datetime.date(datetime.date(2021,8,10).year,datetime.date(2021,8,10).month-1,1)
+        end_date=datetime.date(datetime.date(2021,8,10).year,datetime.date(2021,8,10).month-1,
+                               calendar.monthrange(datetime.date(2021,8,10).year,datetime.date(2021,8,10).month-1)[1])
     elif span_type=='Month to Date':
-        start_date=datetime.date(datetime.datetime.today().year,datetime.datetime.today().month,1)
-        end_date=datetime.date.today()
+        start_date=datetime.date(datetime.date(2021,8,10).year,datetime.date(2021,8,10).month,1)
+        end_date=datetime.date(2021,8,10)
     elif span_type=='Year to Date':
-        start_date=datetime.date(datetime.datetime.today().year,1,1)
-        end_date=datetime.date.today()
+        start_date=datetime.date(datetime.date(2021,8,10).year,1,1)
+        end_date=datetime.date(2021,8,10)
     elif span_type=='Previous Year':
-        start_date=datetime.date(datetime.datetime.today().year-1,1,1)
-        end_date=datetime.date(datetime.datetime.today().year-1,12,31)
+        start_date=datetime.date(datetime.date(2021,8,10).year-1,1,1)
+        end_date=datetime.date(datetime.date(2021,8,10).year-1,12,31)
     elif span_type=='All Time':
         start_date=datetime.datetime(2018,6,19)
-        end_date=datetime.datetime.today().date()
+        end_date=datetime.date(2021,8,10)
     elif span_type=='Last 7 Days':
-        start_date=datetime.date.today()-datetime.timedelta(days=6)
-        end_date=datetime.date.today()
+        start_date=datetime.date(2021,8,10)-datetime.timedelta(days=6)
+        end_date=datetime.date(2021,8,10)
     elif span_type=='Last 30 Days':
-        start_date=datetime.date.today()-datetime.timedelta(days=30)
-        end_date=datetime.date.today()
+        start_date=datetime.date(2021,8,10)-datetime.timedelta(days=30)
+        end_date=datetime.date(2021,8,10)
     return start_date,end_date
         
 @app.callback(
@@ -680,7 +680,7 @@ def Update_Date_Range(value):
     return start_date,end_date
 
 
-# In[108]:
+# In[140]:
 
 
 
@@ -874,7 +874,7 @@ def update_tickets_table(relayoutData,category_selected,type_selected,data):
     return [html.Div(table,className='row',style=black_bg),data]
 
 
-# In[109]:
+# In[141]:
 
 
 # Tickets_by_Aging
@@ -904,7 +904,7 @@ def Update_Ageing(Region):
     return fig
 
 
-# In[110]:
+# In[142]:
 
 
 # Weekly_Ticket_Count
@@ -973,7 +973,7 @@ def Update_Weekly_Ticket_Count(Region,Ageing,Week_Num,Priority,Location,Shift,RD
     return fig
 
 
-# In[111]:
+# In[143]:
 
 
 # Ticket_Count_by_Region
@@ -1041,7 +1041,7 @@ def Update_Ticket_Count_by_Region(Region,Ageing,Week_Num,Priority,Shift,RDC,Cate
     return fig
 
 
-# In[112]:
+# In[144]:
 
 
 # Ticket_Count_by_Shift
@@ -1108,7 +1108,7 @@ def Update_Ticket_Count_by_Shift(Region,Ageing,Week_Num,Priority,Location,RDC,Ca
     return fig
 
 
-# In[113]:
+# In[145]:
 
 
 # Ticket_by_Priority
@@ -1177,7 +1177,7 @@ def Update_Ticket_by_Priority(Region,Ageing,Week_Num,Location,Shift,RDC,Category
     
 
 
-# In[114]:
+# In[146]:
 
 
 # Reported Date Captured
@@ -1245,7 +1245,7 @@ def Update_Reported_Date_Captured_Graph(Region,Ageing,Week_Num,Priority,Location
     return fig
 
 
-# In[115]:
+# In[147]:
 
 
 # Ticket_by_Category
@@ -1314,7 +1314,7 @@ def Update_Ticket_by_Category(Region,Ageing,Week_Num,Priority,Location,Shift,RDC
     
 
 
-# In[116]:
+# In[148]:
 
 
 # Ticket_by_Type
@@ -1383,7 +1383,7 @@ def Update_Ticket_by_Type(Region,Ageing,Week_Num,Priority,Location,Shift,RDC,Cat
     
 
 
-# In[117]:
+# In[149]:
 
 
 # Tickets by Assignment Group
@@ -1451,7 +1451,7 @@ def Update_Ticket_by_Assignment_Group(Region,Ageing,Week_Num,Priority,Location,S
     return fig
 
 
-# In[118]:
+# In[150]:
 
 
 # Tickets by Contact Type
@@ -1519,7 +1519,7 @@ def Update_Ticket_by_Contact_Type(Region,Ageing,Week_Num,Priority,Location,Shift
     return fig
 
 
-# In[119]:
+# In[151]:
 
 
 # Assigned to
@@ -1588,7 +1588,7 @@ def Update_Ticket_by_Assigned_to(Region,Ageing,Week_Num,Priority,Location,Shift,
     return fig
 
 
-# In[120]:
+# In[152]:
 
 
 @app.callback(
@@ -1640,7 +1640,7 @@ def Update_Open_Tickets_Table(Ageing,Week_Num,Priority,Location,Shift,RDC,Catego
         return [html.Br(),[]]
 
 
-# In[121]:
+# In[153]:
 
 
 # Manual Acknowledgement Trend
@@ -1722,7 +1722,7 @@ def Update_Closed_Tickets_Manual_Ack_Trend_Graph(Region,Start_Date,End_Date,Prio
     return fig
 
 
-# In[122]:
+# In[154]:
 
 
 # RCA TAT Trend
@@ -1804,7 +1804,7 @@ def Update_Closed_Tickets_RCA_Trend_Graph(Region,Start_Date,End_Date,Priority,Lo
     return fig
 
 
-# In[123]:
+# In[155]:
 
 
 # Priority
@@ -1881,7 +1881,7 @@ def Update_Closed_Tickets_Priority_Graph(Region,Start_Date,End_Date,Priority,Loc
     return fig
 
 
-# In[124]:
+# In[156]:
 
 
 # Location
@@ -1958,7 +1958,7 @@ def Update_Closed_Tickets_Location_Graph(Region,Start_Date,End_Date,Priority,Loc
     return fig
 
 
-# In[125]:
+# In[157]:
 
 
 # Shift
@@ -2035,7 +2035,7 @@ def Update_Closed_Tickets_Shift_Graph(Region,Start_Date,End_Date,Priority,Locati
     return fig
 
 
-# In[126]:
+# In[158]:
 
 
 # Category
@@ -2112,7 +2112,7 @@ def Update_Closed_Tickets_Category_Graph(Region,Start_Date,End_Date,Priority,Loc
     return fig
 
 
-# In[127]:
+# In[159]:
 
 
 # Type
@@ -2189,7 +2189,7 @@ def Update_Closed_Tickets_Type_Graph(Region,Start_Date,End_Date,Priority,Locatio
     return fig
 
 
-# In[128]:
+# In[160]:
 
 
 # Contact Type
@@ -2267,7 +2267,7 @@ def Update_Closed_Tickets_Contact_Type_Graph(Region,Start_Date,End_Date,Priority
     return fig
 
 
-# In[129]:
+# In[161]:
 
 
 # Closing Count
@@ -2347,7 +2347,7 @@ def Update_Closed_Tickets_Weekly_Count_Graph(Region,Start_Date,End_Date,Priority
     return fig
 
 
-# In[130]:
+# In[162]:
 
 
 @app.callback(
@@ -2390,25 +2390,28 @@ def Update_Closed_Tickets_Table(Region,Start_Date,End_Date,Priority,Location,Shi
             'Contact type':CT['points'][0]['x'] if CT is not None else None,
             span_selected:span_}
         
-    temp_df_=Closed_Incidents_.copy()
-    if all(i is None for i in params.values())==False:
-        for i,j in zip(params.keys(),params.values()):
-            if j is not None:
-                temp_df_=temp_df_.loc[temp_df_[i]==j]
-        data=temp_df_.to_dict('records')       
-        temp_df_=temp_df_[closed_table_cols]
-        data_table=temp_df_.to_dict('records')
-        table2=dash_table.DataTable(id='Closed_Tickets_Table_',style_header={'backgroundColor': 'rgb(30, 30, 30)'},
-                                   export_format='xlsx',export_headers='display',filter_action='native',
-                                   sort_action="native",sort_mode="multi",style_cell=tickets_table_cell_style,
-                                   columns=[{'name':i,'id':i} for i in temp_df_.columns],row_selectable='single',
-                                   style_table={'maxWidth': '1600px', 'overflowY': 'auto'},data=data_table,page_size= 10)
+        temp_df_=Closed_Incidents_.copy()
+        if all(i is None for i in params.values())==False:
+            for i,j in zip(params.keys(),params.values()):
+                if j is not None:
+                    temp_df_=temp_df_.loc[temp_df_[i]==j]
+            data=temp_df_.to_dict('records')       
+            temp_df_=temp_df_[closed_table_cols]
+            data_table=temp_df_.to_dict('records')
+            table2=dash_table.DataTable(id='Closed_Tickets_Table_',style_header={'backgroundColor': 'rgb(30, 30, 30)'},
+                                       export_format='xlsx',export_headers='display',filter_action='native',
+                                       sort_action="native",sort_mode="multi",style_cell=tickets_table_cell_style,
+                                       columns=[{'name':i,'id':i} for i in temp_df_.columns],row_selectable='single',
+                                       style_table={'maxWidth': '1600px', 'overflowY': 'auto'},data=data_table,page_size= 10)
+        else:
+            table2=html.Br()
+            data=[]
         return [table2,data]
     else:
         return [html.Br(),[]]
 
 
-# In[131]:
+# In[163]:
 
 
 # Global Productivity Hub Efficiency
@@ -2472,7 +2475,7 @@ def Update_GPH_Efficiency_Graph(Region,Start_Date,End_Date,Leave,Efficiency,Util
     return fig
 
 
-# In[132]:
+# In[164]:
 
 
 # Global Productivity Hub Utilization
@@ -2536,7 +2539,7 @@ def Update_GPH_Utilization_Graph(Region,Start_Date,End_Date,Leave,Efficiency,Uti
     return fig
 
 
-# In[133]:
+# In[165]:
 
 
 # Global Productivity Hub Capacity Utilization
@@ -2600,7 +2603,7 @@ def Update_GPH_Capacity_Utilization_Graph(Region,Start_Date,End_Date,Leave,Effic
     return fig
 
 
-# In[134]:
+# In[166]:
 
 
 # Global Productivity Hub Attendance
@@ -2658,7 +2661,7 @@ def Update_GPH_Leave_Graph(Region,Start_Date,End_Date,Leave,Efficiency,Utilizati
     return fig
 
 
-# In[135]:
+# In[167]:
 
 
 @app.callback(
@@ -2703,7 +2706,7 @@ def Update_GPH_Details_Table(Region,Start_Date,End_Date,Leave,Efficiency,Utiliza
     
 
 
-# In[136]:
+# In[168]:
 
 
 
@@ -2995,7 +2998,7 @@ def Update_SQF_tickets_table(Region,Start_Date,End_Date,span_selected,sqf,audit_
         return html.Br()
 
 
-# In[137]:
+# In[169]:
 
 
 
@@ -3038,7 +3041,7 @@ def Update_PKT_Graph(Region,Start_Date,End_Date):
     
 
 
-# In[138]:
+# In[170]:
 
 
 
@@ -3234,7 +3237,7 @@ def Update_Performance(Region,Agent_Name,Metrics,Start_Date,End_Date):
         return Options,Data,Columns,fig
 
 
-# In[139]:
+# In[171]:
 
 
 
@@ -3541,7 +3544,7 @@ def Update_PKT_Graph_2(Start_Date,End_Date):
     return fig
 
 
-# In[140]:
+# In[172]:
 
 
 if __name__=='__main__':
